@@ -28,6 +28,14 @@ class TestStatistics(unittest.TestCase):
     def test_tiimi_suodatus(self):
         self.assertEqual(len(self.statistics.team("EDM")), 3)
     
-    def test_top_lista(self):
-        tulos = self.statistics.top(2)
+    def test_top_lista_points(self):
+        tulos = self.statistics.top(2,1)
         self.assertEqual(tulos[0].points, 89+35)
+    
+    def test_top_lista_goals(self):
+        tulos = self.statistics.top(2,2)
+        self.assertEqual(tulos[0].goals, 45)
+    
+    def test_top_lista_assists(self):
+        tulos = self.statistics.top(2,3)
+        self.assertEqual(tulos[0].assists, 89)
