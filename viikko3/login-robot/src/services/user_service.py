@@ -1,3 +1,4 @@
+import re
 from entities.user import User
 
 
@@ -36,5 +37,14 @@ class UserService:
     def validate(self, username, password):
         if not username or not password:
             raise UserInputError("Username and password are required")
+
+        if not re.findall("^[a-z]{3,}", username):
+            raise UserInputError("Not valid username")
+        
+        if len(password) < 8:
+            raise UserInputError("Not valid password")
+        
+        if not re.findall("[^a-z]+", password):
+            raise UserInputError("Not valid password")
 
         # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
