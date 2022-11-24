@@ -3,17 +3,23 @@ from ostos import Ostos
 
 class Ostoskori:
     def __init__(self):
-        pass
+        self.kori = []
         # ostoskori tallettaa Ostos-oliota, yhden per korissa oleva Tuote
 
     def tavaroita_korissa(self):
-        pass
+        ostos_lukumaara = 0
+        for ostos in self.kori:
+            ostos_lukumaara += ostos.lukumaara()
+        return ostos_lukumaara
         # kertoo korissa olevien tavaroiden lukumäärän
         # eli jos koriin lisätty 2 kpl tuotetta "maito", tulee metodin palauttaa 2 
         # samoin jos korissa on 1 kpl tuotetta "maito" ja 1 kpl tuotetta "juusto", tulee metodin palauttaa 2 
 
     def hinta(self):
-        return 0
+        ostos_summa = 0
+        for ostos in self.kori:
+            ostos_summa += ostos.hinta()
+        return ostos_summa
         # kertoo korissa olevien ostosten yhteenlasketun hinnan
 
     def lisaa_tuote(self, lisattava: Tuote):
