@@ -31,8 +31,11 @@ class Ostoskori:
         # lisää tuotteen
 
     def poista_tuote(self, poistettava: Tuote):
+        for ostos in self.kori:
+            if ostos.tuotteen_nimi() == poistettava.nimi():
+                ostos.muuta_lukumaaraa(-1)
         # poistaa tuotteen
-        pass
+
 
     def tyhjenna(self):
         pass
